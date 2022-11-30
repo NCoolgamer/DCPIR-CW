@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Информация о странице -->
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="stylesheet" href="Styles/history_first.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,500;1,700&display=swap"
+          rel="stylesheet">
+
+    <title>Первые движки</title>
+
+    <script type="text/javascript" src="../Static/jquery-3.6.1.min.js"></script>
+
+    <script src="../Static/image_expander.js"></script>
+    <link href="../Static/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="../Static/fontawesome/css/brands.css" rel="stylesheet">
+    <link href="../Static/fontawesome/css/solid.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+
+</head>
+<body>
+
+<div class="page_wrapper">
+
+    <nav id="main_menu">
+    <a class="navbar_logo" href="../index.html"><img src="../Static/logo.png" alt="Логотип сайта"></a>
+    <a class="navbar_button" href="../index.html">Главная</a>
+    <a class="navbar_button" href="../Pages/Unity.html">Unity</a>
+    <a class="navbar_button" href="../Pages/UnrealEngine.html">Unreal</a>
+    <a class="navbar_button" href="../Pages/CryEngine.html">CryEngine</a>
+    <a class="navbar_button" href="../Pages/Godot.html">Godot</a>
+
+    <div class="dropdown">
+        <div class="navbar_button dropdown_btn">История</div>
+        <div class="dropdown_content">
+            <a class="navbar_button" href="../Pages/history_before.html">До движков</a>
+            <a class="navbar_button" href="../Pages/history_first.html">Первые движки</a>
+            <a class="navbar_button" href="../Pages/history_current.html">Современные движки</a>
+        </div>
+    </div>
+
+    <div class="account_buttons_holder">
+        <a class="account_button" href="../Pages/signup.html">Регистрация</a>
+        <a class="account_button" href="../Pages/login.html">Вход</a>
+    </div>
+</nav>
+
+<nav id="mobile_menu">
+    <div>
+        <a class="navbar_logo" href="../index.html"><img src="../Static/logo.png" alt="На главную"></a>
+        <input type="checkbox" id="hamburger_menu" class="burger_shower"/>
+        <label id="hamburger_label" for="hamburger_menu" class="burger_shower">
+            <div class="burger_icon">
+                <span class="icon-bar top-bar"></span>
+                <span class="icon-bar middle-bar"></span>
+                <span class="icon-bar bottom-bar"></span>
+            </div>
+        </label>
+    </div>
+    <div id="mobile_menu_buttons">
+        <a class="navbar_button" href="../index.html">Главная</a>
+        <div class="section_holder">
+            <div class="menu_section">
+                <input type="checkbox" id="engines_navbar" class="section_shower"/>
+                <label for="engines_navbar" class="dropdown_shower_label">
+                    Движки
+                </label>
+                <div class="section_content">
+                    <a class="navbar_button" href="../Pages/Unity.html">Unity</a>
+                    <a class="navbar_button" href="../Pages/UnrealEngine.html">Unreal</a>
+                    <a class="navbar_button" href="../Pages/CryEngine.html">CryEngine</a>
+                    <a class="navbar_button" href="../Pages/Godot.html">Godot</a>
+                </div>
+            </div>
+
+            <div class="menu_section">
+                <input type="checkbox" id="history_navbar" class="section_shower"/>
+                <label for="history_navbar" class="dropdown_shower_label">
+                    История
+                </label>
+                <div class="section_content">
+                    <a class="navbar_button" href="../Pages/history_before.html">До движков</a>
+                    <a class="navbar_button" href="../Pages/history_first.html">Первые движки</a>
+                    <a class="navbar_button" href="../Pages/history_current.html">Современные движки</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="account_buttons_holder">
+            <a class="account_button" href="../Pages/signup.html">Регистрация</a>
+            <a class="account_button" href="../Pages/login.html">Вход</a>
+        </div>
+
+        <div id="up_arrow"><i class="fa-solid fa-chevron-up"></i></div>
+    </div>
+
+    <script>
+
+        function setScrollState(enable) {
+            if (enable) {
+                // add style to html element
+                document.documentElement.style.overflow = "auto";
+            } else {
+                document.documentElement.style.overflow = "hidden";
+            }
+        }
+
+        var burger = document.getElementById("hamburger_menu");
+        var mobile_menu = document.getElementById("mobile_menu");
+        burger.addEventListener("click", function () {
+            mobile_menu.classList.toggle("expanded");
+            mobile_menu.style.pointerEvents = "none";
+
+            setScrollState(!burger.checked);
+
+            // wait 0.35s
+            setTimeout(function () {
+                mobile_menu.style.pointerEvents = "auto";
+            }, 350);
+        });
+
+        // on up arrow click, uncheck the burger
+        var up_arrow = document.getElementById("up_arrow");
+        up_arrow.addEventListener("click", function () {
+            burger.checked = !burger.checked;
+
+            setScrollState(!burger.checked);
+
+            mobile_menu.classList.toggle("expanded");
+            mobile_menu.style.pointerEvents = "none";
+            // wait 0.35s
+            setTimeout(function () {
+                mobile_menu.style.pointerEvents = "auto";
+            }, 350);
+        });
+
+        // for each dropdown shower, add an event listener
+        var dropdown_showers = document.getElementsByClassName("section_shower");
+        for (var i = 0; i < dropdown_showers.length; i++) {
+            dropdown_showers[i].addEventListener("click", function () {
+                // toggle class on the section
+                this.closest(".menu_section").classList.toggle("expanded");
+
+                // close all other sections if height is below 680px
+                if (window.innerHeight < 680) {
+                    for (var j = 0; j < dropdown_showers.length; j++) {
+                        if (dropdown_showers[j] !== this) {
+                            dropdown_showers[j].closest(".menu_section").classList.remove("expanded");
+                        }
+                    }
+                }
+
+            });
+        }
+    </script>
+</nav>
+
+    <div class="content_wrapper">
+        <main id="contents" class="glass_pane glass_pane_border">
+
+            <h1 id="Title">Первые движки</h1>
+
+            <section>
+                <h2>Необходимость движков</h2>
+
+                <figure class="floatr">
+                    <img enlargeable id="super_mario_bros" src="../Static/History/super_mario_bros.png"
+                         alt="Игра Super Mario Bros. (1985)">
+                    <figcaption>Игра Super Mario Bros. (1985)</figcaption>
+                </figure>
+
+                <p>
+                    Необходимость в движках возникла из-за огромного количества проблем, которые возникали при
+                    разработке игр без движков.
+                    Например, разработчикам игр для консоли Atari 2600 приходилось самостоятельно для каждой игры
+                    реализовывать код, отвечающий за работу с дисплеем, звук, управление и т.п., чтобы максимально
+                    эффективно использовать ресурсы консоли. Таким образом, код очень редко использовался повторно, и
+                    разработка игр занимала много времени, даже при их относительной простоте в графическом и смысловом
+                    плане. Когда же стала использоваться 3D-графика, то сложность разработки игр возросла ещё больше.
+                </p>
+
+                <p>
+                    Первые программы, похожие на движки, которые использовались только внутри одной компании, начали
+                    появляться
+                    в середине 80-х годов. Например, в Nintendo разработали движок для игр для Nintendo Entertainment
+                    System, упрощающий разработку игр с сайд-скроллингом.
+                    Первой игрой, использующей этот "движок", стала игра Excitebike (1984), а затем культовый платформер
+                    Super Mario Bros.
+                    (1985).
+                    Это позволило персонажу Марио постепенно разгоняться с ходьбы до бега, а не передвигаться с
+                    постоянной скоростью, как было в ранних платформерах.
+                </p>
+
+                <h2 class="no_float">Появление движков</h2>
+
+                <figure class="floatl">
+                    <img enlargeable id="doom" src="../Static/History/doom.png"
+                         alt="Игра DOOM! (1993)">
+                    <figcaption>Игра DOOM! (1993)</figcaption>
+                </figure>
+
+                <p>
+                    С ростом производительности компьютеров и появлением новых игровых консолей, которые имели
+                    достаточно памяти,
+                    стало возможно использовать другой подход к разработке игр. Вместо того чтобы каждый раз писать код
+                    с нуля, разработчики стали использовать готовые движки, в которых уже были реализованы основные
+                    функции по работе с аппаратными ресурсами компьютера или консоли, а также были доступны прочие
+                    упрощающие разработку игр инструменты.
+                </p>
+
+                <p>
+                    До выпуска DOOM! в 1993 году, компания-разработчик id Software сообщила прессе, что готовит что-то
+                    совершенно новое.
+                    В компании заявили, что игра раздвинет границы возможного на компьютерах, и они не ошиблись.
+                    Пресса также отметила использование "DOOM! engine", как программы в основе игры, и таким образом
+                    появился термин "движок".
+                    Движок для DOOM! после коммерческого успеха игры был портирован на другие операционные системы и
+                    игровые консоли, что позволило
+                    запускать игру и на них. Тут проявилось еще одно преимущество движков - <b>возможность переноса игры
+                    на другие платформы</b>.
+                </p>
+
+                <p>
+                    Разработчики из id Software были недовольны наличием огромных недостатков в их движке. Например,
+                    из-за ограничения в размере чисел с плавающей точкой, на больших разрешениях экрана игра начинала
+                    показывать артефакты в виде искажений поля зрения или текстур.
+                    Также в движке, хотя он и был заявлен как 3D движок, нельзя было смотреть вверх или вниз.
+                    В 1996 году вышла игра Quake, в которой разработчиками из id Software был использован новый движок,
+                    уже полностью поддерживащий 3D графику, и даже аппаратное ускорение 3D графики при помощи OpenGL.
+                </p>
+
+                <p>
+                    Движки позволяли сосредоточиться на разработке игрового мира, персонажей, оружия и уровней - того,
+                    что принято называть игровым контентом.
+                    Такое разделение на две части - движок, отвечающий за базовые механики и работу игры, и игровой
+                    контент - позволило разработчикам разделиться на две соответствующие группы: разработчики движка и
+                    разработчики игрового контента, что позволило каждой группе сфокусироваться на своей части.
+                    Позже вышедшие игры Quake III Arena (1999) и Unreal (1998), разработанная компанией Epic Games,
+                    использовали именной такой подход - движок и контент разрабатывался отдельно.
+                </p>
+
+                <figure class="floatr">
+                    <img enlargeable id="unreal_editor" src="../Static/History/unreal_editor.png"
+                         alt="Редактор уровней UnrealEd, встроенный в Unreal Engine">
+                    <figcaption>Редактор уровней UnrealEd, встроенный в Unreal Engine</figcaption>
+                </figure>
+
+                <p>
+                    Движок Unreal Engine, разработанный в основном основателем компании Epic Games Тимом Суини в период
+                    с 1995 по 1998 год,
+                    позволял разработчикам использовать готовые функции для работы с графикой, звуком, физикой, сетью и
+                    т.д.
+                    Он быстро стал популярен среди разработчиков, и к концу 1999 года был использован как минимум в 16
+                    сторонних проектах, таких как Deus Ex, The Wheel of Time и Duke Nukem Forever.
+                </p>
+
+                <p>
+                    Выделение движков в отдельный программный продукт позволило разработчикам лицензировать их
+                    использование другим компаниям за определенную плату, что приносило дополнительный доход
+                    компании-разработчику движка.
+                    Стоимость лицензии варьировалась между движками от 10 000 до нескольких миллионов долларов.
+                    Самые популярные движки, вроде <a class="link" href="../Pages/UnrealEngine.html">Unreal Engine</a>, использовались десятками компаний, что позволило Epic
+                    Games
+                    сфокусироваться на улучшении движка.
+                    Таким образом, разработка движков стала собственной отраслью, приносящей огромные деньги.
+                </p>
+
+                <div class="no_float buttons">
+                    <a class="previous_btn" href="../Pages/history_before.html">
+                        <i class="fa-solid fa-backward"></i>До движков
+                    </a>
+                    <a class="next_btn" href="../Pages/history_current.html">
+                        Современные движки<i class="fa-solid fa-forward"></i>
+                    </a>
+                </div>
+
+            </section>
+        </main>
+
+
+        <footer>
+    <div id="about_block">
+        <h2 class="block_header">О сайте</h2>
+        <p>
+            На сайте GameDevBox.ru рассматриваются самые популярные на сегодняшний день игровые движки,
+            их возможности и преимущества, стоимость, условия лицензирования, история развития и многое другое.
+        </p>
+    </div>
+
+    <div id="social_networks_block">
+        <h2 class="block_header">Социальные сети</h2>
+
+        <div id="soc_network_holder">
+
+            <a id="vk" href="https://vk.com/" aria-label="ВКонтакте">
+                <i class="icon fa-brands fa-vk"></i>
+            </a>
+            <a id="linkedin" href="https://www.linkedin.com/" aria-label="LinkedIn">
+                <i class="icon fa-brands fa-linkedin-in"></i>
+            </a>
+            <a id="twitter" href="https://twitter.com/" aria-label="Twitter">
+                <i class="icon fa-brands fa-twitter"></i>
+            </a>
+            <a id="telegram" href="https://telegram.com/" aria-label="Telegram">
+                <i class="icon fa-brands fa-telegram"></i>
+            </a>
+            <a id="github" href="https://github.com/ncoolgamer" aria-label="Github">
+                <i class="icon fa-brands fa-github"></i>
+            </a>
+        </div>
+    </div>
+
+    <div id="map_block">
+        <h2 class="block_header">Карта сайта</h2>
+        <a href="../index.html">Главная страница</a>
+        <a href="../Pages/signup.html">Регистрация</a>
+        <a href="../Pages/login.html">Вход</a>
+        <h3>Список движков</h3>
+        <ul>
+            <li><a href="../Pages/Unity.html">Unity</a></li>
+            <li><a href="../Pages/UnrealEngine.html">Unreal</a></li>
+            <li><a href="../Pages/CryEngine.html">CryEngine</a></li>
+            <li><a href="../Pages/Godot.html">Godot</a></li>
+        </ul>
+
+        <h3>История</h3>
+        <ul>
+            <li><a href="../Pages/history_before.html">До движков</a></li>
+            <li><a href="../Pages/history_first.html">Первые движки</a></li>
+            <li><a href="../Pages/history_current.html">Современные движки</a></li>
+        </ul>
+    </div>
+
+    <address>
+        <h2 class="block_header">Контакты</h2>
+        <a href="mailto:orlov_dmitriy630@mail.ru?subject=Сообщение+с+сайта&body=Текст+сообщения">
+            <i class="fa-solid fa-envelope"></i>orlov_dmitriy630@mail.ru</a>
+        <br>
+        <a href="tel:+79161234567">
+            <i class="fa-solid fa-phone"></i>+7 (916) 123-45-67</a>
+
+    </address>
+
+    <p id="copyright" class="footer_author_text">
+        Сделано Орловым Дмитрием (группа ИКБО-03-21) в 2022 году.
+    </p>
+</footer>
+
+    </div>
+</div>
+
+<script src="../Static/Videos/youtube_api.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+@import "../../Static/shared.css";
+@import "../../Static/Slides/slides.css";
+@import "history_page.css";
+
+body:before {
+    -webkit-filter: hue-rotate(-50deg) brightness(0.4);
+            filter: hue-rotate(-50deg) brightness(0.4);
+}
+
+#spacewar {
+    max-width: 400px;
+}
+
+#atari2600 {
+    max-width: 400px;
+}
+
+#space_invaders {
+    max-width: 350px;
+}
+/*# sourceMappingURL=history_before.css.map */
+
+/*# sourceMappingURL=history_before.css.map */
+
+/*# sourceMappingURL=history_before.css.map */
+
+/*# sourceMappingURL=history_before.css.map */
+
+/*# sourceMappingURL=history_before.css.map */

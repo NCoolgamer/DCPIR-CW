@@ -1,0 +1,31 @@
+@import "../../Static/shared.css";
+@import "../../Static/Slides/slides.css";
+@import "history_page.css";
+
+body:before {
+    -webkit-filter: hue-rotate(50deg) brightness(0.6);
+            filter: hue-rotate(50deg) brightness(0.6);
+}
+
+#doom {
+    max-width: 480px;
+}
+
+#unreal_editor {
+    max-width: 450px;
+}
+
+#unreal_editor ~ figcaption {
+    max-width: 450px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+/*# sourceMappingURL=history_first.css.map */
+
+/*# sourceMappingURL=history_first.css.map */
+
+/*# sourceMappingURL=history_first.css.map */
+
+/*# sourceMappingURL=history_first.css.map */
+
+/*# sourceMappingURL=history_first.css.map */

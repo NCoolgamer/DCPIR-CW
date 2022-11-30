@@ -1,0 +1,179 @@
+@import "navbar.css";
+@import "footer.css";
+
+:root {
+    --dark-blue: #25283D;
+    --light-blue: #ADD7F6;
+    --light-red: #D16666;
+    --light-green: #688B58;
+    --light-light-gray: #eeeeee;
+
+    --round_border_width: 17px;
+}
+
+html {
+    font-size: 16px;
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 480px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 992px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1200px) {
+    html {
+        font-size: 17px;
+    }
+}
+
+head {
+    /*Set font*/
+    font-family: 'Roboto', sans-serif;
+}
+
+.content_wrapper {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 0;
+    min-height: calc(100vh - var(--navbar_height));
+    margin-top: var(--navbar_height);
+}
+
+@media screen and (max-width: 1000px) {
+    .sidebar {
+        top: 0;
+    }
+}
+
+.no_sidebar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.page_wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    position: relative;
+    height: auto;
+}
+
+body {
+    /*Set font*/
+    font-family: 'Roboto', sans-serif;
+
+    /*Remove default margin and padding - they are added in other elements*/
+    margin: 0;
+    padding: 0;
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+main {
+    grid-area: main;
+    /*Set margin to 8px on all sides but right (this is where the sidebar is)*/
+    margin: 0.5rem 0 0.5rem 0.5rem;
+    z-index: 0;
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+    /*width: calc(100vw - 1rem);*/
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 2.2rem;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+
+.glass_pane {
+    background: rgba(75, 75, 75, 0.2);
+    -webkit-backdrop-filter: blur(7px) !important;
+            backdrop-filter: blur(7px) !important;
+    color: white;
+    border-radius: var(--round_border_width);
+
+    -webkit-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+
+    padding: 1rem;
+}
+
+.glass_pane_border {
+    border: rgba(255, 255, 255, 0.3) 0.1rem solid;
+    border-right: rgba(255, 255, 255, 0.15) 0.1rem solid;
+    border-bottom: rgba(255, 255, 255, 0.15) 0.1rem solid;
+}
+
+/*# sourceMappingURL=shared.css.map */
+
+/*# sourceMappingURL=shared.css.map */
+
+/*# sourceMappingURL=shared.css.map */
+
+/*# sourceMappingURL=shared.css.map */
+
+/*# sourceMappingURL=shared.css.map */

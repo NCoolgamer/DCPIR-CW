@@ -1,0 +1,429 @@
+.form_wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    margin-right: 1rem;
+
+    position: relative;
+
+    max-width: 1300px;
+}
+
+.form_wrapper form {
+    display: grid;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+
+    gap: 10px;
+
+    padding: 1rem 3rem;
+
+    width: 100%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.form_wrapper form .wide {
+    grid-column: span 2;
+}
+
+.form_wrapper form #password_input_holder {
+    grid-column: 1;
+}
+
+.form_wrapper .input_holder textarea, .input_holder input[type="date"] {
+    font-family: inherit;
+}
+
+.form_wrapper .input_holder input, .form_wrapper .input_holder textarea, .form_wrapper .input_holder select {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: var(--round_border_width);
+
+    background: rgba(255, 255, 255, 0.4);
+    color: white;
+
+    border: rgba(255, 255, 255, 0.3) 0.1rem solid;
+    border-right: rgba(255, 255, 255, 0.15) 0.1rem solid;
+    border-bottom: rgba(255, 255, 255, 0.15) 0.1rem solid;
+
+    font-size: 1.25em;
+    line-height: 2rem;
+
+    display: inline-block;
+    width: 22rem;
+    /* To make sure the size of select matches all other elements */
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.form_wrapper .input_holder label {
+    font-weight: 500;
+    display: inline-block;
+}
+
+.form_wrapper label a {
+    color: var(--light-blue);
+}
+
+.form_wrapper .required::after {
+    content: "*";
+    color: #bb3838;
+}
+
+.form_wrapper .input_holder {
+    text-align: right;
+
+    display: -webkit-box;
+
+    display: -ms-flexbox;
+
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    width: 100%;
+}
+
+.form_wrapper .input_holder input:focus, .form_wrapper .input_holder select:focus, .form_wrapper .input_holder textarea:focus {
+    -webkit-transition: background-color 0.35s ease-in-out;
+    -o-transition: background-color 0.35s ease-in-out;
+    transition: background-color 0.35s ease-in-out;
+}
+
+.form_wrapper .input_holder input:focus, .form_wrapper .input_holder select:focus, .form_wrapper .input_holder textarea:focus {
+}
+
+.form_wrapper .input_holder label {
+    -webkit-box-ordinal-group: 0;
+        -ms-flex-order: -1;
+            order: -1;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.form_wrapper .input_holder.checkbox label, .form_wrapper .input_holder.radio label {
+    -webkit-box-ordinal-group: 1;
+        -ms-flex-order: 0;
+            order: 0;
+}
+
+.form_wrapper .input_holder input:focus + label, .form_wrapper .input_holder textarea:focus + label, .form_wrapper .input_holder select:focus + label {
+    color: var(--light-blue);
+}
+
+.form_wrapper .input_holder select option {
+    color: #FFFFFA;
+}
+
+.form_wrapper .input_holder input::-webkit-input-placeholder, .form_wrapper .input_holder textarea::-webkit-input-placeholder {
+    color: #FFFFFA;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.form_wrapper .input_holder input::-moz-placeholder, .form_wrapper .input_holder textarea::-moz-placeholder {
+    color: #FFFFFA;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.form_wrapper .input_holder input:-ms-input-placeholder, .form_wrapper .input_holder textarea:-ms-input-placeholder {
+    color: #FFFFFA;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.form_wrapper .input_holder input::-ms-input-placeholder, .form_wrapper .input_holder textarea::-ms-input-placeholder {
+    color: #FFFFFA;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.form_wrapper .input_holder input::placeholder, .form_wrapper .input_holder textarea::placeholder {
+    color: #FFFFFA;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.form_wrapper .input_holder input[type="checkbox"] {
+    -webkit-transform: scale(1.5);
+        -ms-transform: scale(1.5);
+            transform: scale(1.5);
+}
+
+.form_wrapper .input_holder input[type="radio"] {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* highlight checked option */
+.form_wrapper .input_holder input[type="radio"]:checked + label {
+    color: var(--light-blue);
+}
+
+.form_wrapper .input_holder .short {
+    width: auto;
+}
+
+.form_wrapper fieldset {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+
+    border: none;
+
+    width: 100%;
+    margin: 1rem;
+}
+
+.form_wrapper fieldset legend {
+    font-weight: 500;
+    font-size: 1.4rem;
+    width: 100%;
+    text-align: center;
+}
+
+.form_wrapper fieldset .input_holder {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    width: 40%;
+}
+
+.form_wrapper fieldset .input_holder input[type="radio"]:checked + label {
+    color: var(--light-blue);
+}
+
+input[type="tel"]:invalid {
+    background: rgba(248, 201, 201, 0.6);
+}
+
+@media screen and (min-width: 1321px) {
+    .form_wrapper .input_holder input, .form_wrapper .input_holder textarea, .form_wrapper .input_holder select {
+        width: 18rem;
+    }
+
+    .form_wrapper .input_holder.wide input, .form_wrapper .input_holder.wide textarea, .form_wrapper .input_holder.wide select {
+        width: 36rem;
+    }
+
+    .form_wrapper .input_holder.checkbox {
+        width: 36rem;
+        -webkit-box-pack: start;
+            -ms-flex-pack: start;
+                justify-content: flex-start;
+    }
+
+    .form_wrapper .input_holder.radio {
+        width: 40rem;
+        -webkit-box-pack: start;
+            -ms-flex-pack: start;
+                justify-content: flex-start;
+    }
+
+    .form_wrapper .input_holder.radio ~ label {
+        margin-right: 4rem;
+    }
+
+    .form_wrapper .input_holder input[type="checkbox"] {
+        width: 2rem;
+    }
+
+    .form_wrapper .input_holder .radio_holder {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: start;
+            -ms-flex-pack: start;
+                justify-content: flex-start;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+    }
+
+    .form_wrapper .input_holder input[type="radio"] {
+        width: 2rem;
+    }
+}
+
+@media screen and (max-width: 1320px) {
+
+    .form_wrapper .input_holder {
+        -webkit-box-pack: end;
+            -ms-flex-pack: end;
+                justify-content: flex-end;
+    }
+
+    .form_wrapper form {
+        grid-template-columns: 1fr;
+    }
+
+    .form_wrapper form .wide {
+        grid-column: auto !important;
+    }
+
+    .form_wrapper form fieldset {
+        width: auto;
+    }
+
+    .form_wrapper form fieldset .input_holder {
+        width: auto;
+    }
+
+    .form_wrapper .input_holder input, .form_wrapper .input_holder textarea, .form_wrapper .input_holder select {
+        width: 26rem;
+    }
+
+    .form_wrapper .input_holder.checkbox, .form_wrapper .input_holder.radio {
+        -webkit-box-pack: start;
+            -ms-flex-pack: start;
+                justify-content: flex-start;
+    }
+
+    .form_wrapper .input_holder input[type="checkbox"] {
+        width: 2rem;
+    }
+
+}
+
+/* Mobile view */
+@media screen and (max-width: 850px) {
+
+    main {
+        margin: 0;
+    }
+
+    .form_wrapper {
+        width: 100%;
+    }
+
+    .form_wrapper .input_holder {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+    }
+
+    .form_wrapper .input_holder label {
+        text-align: center;
+        width: 100%;
+    }
+
+    .form_wrapper .input_holder.checkbox, .form_wrapper .input_holder.radio {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -webkit-box-pack: start;
+            -ms-flex-pack: start;
+                justify-content: flex-start;
+    }
+
+    .form_wrapper .input_holder.checkbox label, .form_wrapper .input_holder.radio label {
+        width: auto;
+    }
+
+    .form_wrapper .input_holder input, .form_wrapper .input_holder textarea, .form_wrapper .input_holder select {
+        width: 95%;
+    }
+
+    .form_wrapper button {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .form_wrapper .input_holder {
+        font-size: 1rem;
+    }
+
+    input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+        font-size: 1rem;
+    }
+
+    input::-moz-placeholder, textarea::-moz-placeholder {
+        font-size: 1rem;
+    }
+
+    input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+        font-size: 1rem;
+    }
+
+    input::-ms-input-placeholder, textarea::-ms-input-placeholder {
+        font-size: 1rem;
+    }
+
+    input::placeholder, textarea::placeholder {
+        font-size: 1rem;
+    }
+
+    .form_wrapper .input_holder input, .form_wrapper .input_holder textarea, .form_wrapper .input_holder select {
+        font-size: 1rem;
+    }
+
+    .form_wrapper .input_holder.checkbox, .form_wrapper .input_holder.radio {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-pack: start;
+            -ms-flex-pack: start;
+                justify-content: flex-start;
+    }
+}
+/*# sourceMappingURL=forms.css.map */
+
+/*# sourceMappingURL=forms.css.map */
+
+/*# sourceMappingURL=forms.css.map */
+
+/*# sourceMappingURL=forms.css.map */
+
+/*# sourceMappingURL=forms.css.map */

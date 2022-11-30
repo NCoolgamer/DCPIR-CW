@@ -1,0 +1,164 @@
+@import "../../Static/shared.css";
+@import "forms.css";
+
+.content_wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+
+.content_wrapper main {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+
+h1 {
+    font-weight: 900;
+    text-align: center;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+}
+
+.form_wrapper button {
+    width: 100%;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-weight: 900;
+    font-size: 1.2rem;
+    height: 3.2rem;
+
+    cursor: pointer;
+    position: relative;
+
+    background: transparent;
+    border: none;
+}
+
+.form_wrapper button:before {
+    content: "Зарегистрироваться";
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    width: calc(100% - 2rem);
+    height: calc(100% - 2rem);
+    border-radius: 0.5rem;
+    background: rgb(20, 224, 243);
+    background: -o-linear-gradient(45deg, rgb(20, 124, 243) 0%, rgb(121, 55, 253) 50%, rgb(0, 255, 4) 100%);
+    background: linear-gradient(45deg, rgb(20, 124, 243) 0%, rgb(121, 55, 253) 50%, rgb(0, 255, 4) 100%);
+    -webkit-filter: brightness(100%) blur(5px);
+            filter: brightness(100%) blur(5px);
+    -webkit-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    background-size: 200%;
+    background-position-x: left;
+}
+
+.form_wrapper button:hover:before {
+    background-position-x: right;
+    -webkit-filter: brightness(140%)  blur(10px);
+            filter: brightness(140%)  blur(10px);
+}
+
+.form_wrapper button:active:before {
+    background-position-x: right;
+    -webkit-filter: brightness(200%)  blur(17px);
+            filter: brightness(200%)  blur(17px);
+}
+
+.form_wrapper button:after {
+    content: "Зарегистрироваться";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+    line-height: 3.2rem;
+    background: rgba(0, 0, 0, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+    -webkit-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+
+    color: white;
+
+    border: rgba(255, 255, 255, 0.3) 0.1rem solid;
+    border-right: rgba(255, 255, 255, 0.15) 0.1rem solid;
+    border-bottom: rgba(255, 255, 255, 0.15) 0.1rem solid;
+
+    -webkit-box-shadow: 0 0 5px 5px rgba(0, 0, 0, .3);
+
+            box-shadow: 0 0 5px 5px rgba(0, 0, 0, .3);
+}
+
+.form_wrapper button:hover:after {
+    -webkit-box-shadow: 0 0 5px 5px rgba(0, 0, 0, .5);
+            box-shadow: 0 0 5px 5px rgba(0, 0, 0, .5);
+}
+
+.form_wrapper button:active:after {
+    -webkit-box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0);
+            box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0);
+}
+
+.form_wrapper button:hover {
+    background-position-x: right;
+}
+
+/* Pattern for the background */
+body::before {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 105vh;
+    background-image: url("../../Static/Backgrounds/trianglify2.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+    z-index: -100;
+}
+
+/*# sourceMappingURL=signup.css.map */
+
+/*# sourceMappingURL=signup.css.map */
+
+/*# sourceMappingURL=signup.css.map */
+
+/*# sourceMappingURL=signup.css.map */
+
+/*# sourceMappingURL=signup.css.map */

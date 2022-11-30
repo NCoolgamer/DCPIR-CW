@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Информация о странице -->
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="Static/homepage_style.css">
+    <link rel="stylesheet" href="Static/shopping_cart.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,500;1,700&display=swap"
+          rel="stylesheet">
+
+    <title>Игровые Движки</title>
+
+    <script type="text/javascript" src="Static/jquery-3.6.1.min.js"></script>
+
+    <link href="Static/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="Static/fontawesome/css/brands.css" rel="stylesheet">
+    <link href="Static/fontawesome/css/solid.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+
+</head>
+<body>
+<div class="page_wrapper">
+
+    <nav id="main_menu">
+    <a class="navbar_logo" href="index.html"><img src="Static/logo.png" alt="Логотип сайта"></a>
+    <a class="navbar_button" href="index.html">Главная</a>
+    <a class="navbar_button" href="Pages/Unity.html">Unity</a>
+    <a class="navbar_button" href="Pages/UnrealEngine.html">Unreal</a>
+    <a class="navbar_button" href="Pages/CryEngine.html">CryEngine</a>
+    <a class="navbar_button" href="Pages/Godot.html">Godot</a>
+
+    <div class="dropdown">
+        <div class="navbar_button dropdown_btn">История</div>
+        <div class="dropdown_content">
+            <a class="navbar_button" href="Pages/history_before.html">До движков</a>
+            <a class="navbar_button" href="Pages/history_first.html">Первые движки</a>
+            <a class="navbar_button" href="Pages/history_current.html">Современные движки</a>
+        </div>
+    </div>
+
+    <div class="account_buttons_holder">
+        <a class="account_button" href="Pages/signup.html">Регистрация</a>
+        <a class="account_button" href="Pages/login.html">Вход</a>
+    </div>
+</nav>
+
+<nav id="mobile_menu">
+    <div>
+        <a class="navbar_logo" href="index.html"><img src="Static/logo.png" alt="На главную"></a>
+        <input type="checkbox" id="hamburger_menu" class="burger_shower"/>
+        <label id="hamburger_label" for="hamburger_menu" class="burger_shower">
+            <div class="burger_icon">
+                <span class="icon-bar top-bar"></span>
+                <span class="icon-bar middle-bar"></span>
+                <span class="icon-bar bottom-bar"></span>
+            </div>
+        </label>
+    </div>
+    <div id="mobile_menu_buttons">
+        <a class="navbar_button" href="index.html">Главная</a>
+        <div class="section_holder">
+            <div class="menu_section">
+                <input type="checkbox" id="engines_navbar" class="section_shower"/>
+                <label for="engines_navbar" class="dropdown_shower_label">
+                    Движки
+                </label>
+                <div class="section_content">
+                    <a class="navbar_button" href="Pages/Unity.html">Unity</a>
+                    <a class="navbar_button" href="Pages/UnrealEngine.html">Unreal</a>
+                    <a class="navbar_button" href="Pages/CryEngine.html">CryEngine</a>
+                    <a class="navbar_button" href="Pages/Godot.html">Godot</a>
+                </div>
+            </div>
+
+            <div class="menu_section">
+                <input type="checkbox" id="history_navbar" class="section_shower"/>
+                <label for="history_navbar" class="dropdown_shower_label">
+                    История
+                </label>
+                <div class="section_content">
+                    <a class="navbar_button" href="Pages/history_before.html">До движков</a>
+                    <a class="navbar_button" href="Pages/history_first.html">Первые движки</a>
+                    <a class="navbar_button" href="Pages/history_current.html">Современные движки</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="account_buttons_holder">
+            <a class="account_button" href="Pages/signup.html">Регистрация</a>
+            <a class="account_button" href="Pages/login.html">Вход</a>
+        </div>
+
+        <div id="up_arrow"><i class="fa-solid fa-chevron-up"></i></div>
+    </div>
+
+    <script>
+
+        function setScrollState(enable) {
+            if (enable) {
+                // add style to html element
+                document.documentElement.style.overflow = "auto";
+            } else {
+                document.documentElement.style.overflow = "hidden";
+            }
+        }
+
+        var burger = document.getElementById("hamburger_menu");
+        var mobile_menu = document.getElementById("mobile_menu");
+        burger.addEventListener("click", function () {
+            mobile_menu.classList.toggle("expanded");
+            mobile_menu.style.pointerEvents = "none";
+
+            setScrollState(!burger.checked);
+
+            // wait 0.35s
+            setTimeout(function () {
+                mobile_menu.style.pointerEvents = "auto";
+            }, 350);
+        });
+
+        // on up arrow click, uncheck the burger
+        var up_arrow = document.getElementById("up_arrow");
+        up_arrow.addEventListener("click", function () {
+            burger.checked = !burger.checked;
+
+            setScrollState(!burger.checked);
+
+            mobile_menu.classList.toggle("expanded");
+            mobile_menu.style.pointerEvents = "none";
+            // wait 0.35s
+            setTimeout(function () {
+                mobile_menu.style.pointerEvents = "auto";
+            }, 350);
+        });
+
+        // for each dropdown shower, add an event listener
+        var dropdown_showers = document.getElementsByClassName("section_shower");
+        for (var i = 0; i < dropdown_showers.length; i++) {
+            dropdown_showers[i].addEventListener("click", function () {
+                // toggle class on the section
+                this.closest(".menu_section").classList.toggle("expanded");
+
+                // close all other sections if height is below 680px
+                if (window.innerHeight < 680) {
+                    for (var j = 0; j < dropdown_showers.length; j++) {
+                        if (dropdown_showers[j] !== this) {
+                            dropdown_showers[j].closest(".menu_section").classList.remove("expanded");
+                        }
+                    }
+                }
+
+            });
+        }
+    </script>
+</nav>
+
+    <div class="content_wrapper">
+
+        <main id="contents">
+
+            <h1 class="homepage_title" id="HomePage">Игровые движки</h1>
+
+            <!-- Engine List -->
+            <section class="engine_section">
+                <h1 id="EngineList">Список движков</h1>
+                <div class="engine_list">
+                    <!-- Unity -->
+                    <article class="engine_description glass_pane glass_pane_border">
+
+                        <h2 id="UnityH">Unity</h2>
+
+                        <!-- Логотип движка Unity -->
+                        <img class="engine_logo" id="unity_logo" src="Static/Unity/unity_logo.png"
+                             alt="Логотип Unity">
+
+                        <!-- Краткое описание -->
+                        <h3>Краткое описание</h3>
+                        <p>
+                            Unity - <i>кроссплатформенный</i> игровой движок, разрабатываемый компанией <strong>Unity Technologies.</strong>
+                            <br>
+                            Он выпускается с <b>2005</b> года, и с тех пор <em>постоянно</em> улучшается.
+                            Первая версия Unity вышла в открытый доступ в <b>2005</b> году, а последняя на данный момент – <b>Unity
+                            2022.1</b> – в 2022 году.
+                        </p>
+                        <a class="engine_page_link" href="Pages/Unity.html">На страницу движка</a>
+
+                    </article>
+
+                    <!-- Unreal Engine -->
+                    <article class="engine_description glass_pane glass_pane_border">
+                        <h2 id="UEH">Unreal Engine</h2>
+
+                        <!-- Логотип движка UE -->
+                        <img class="engine_logo" id="ue_logo" width="150" src="Static/Unreal/unreal_logo.png"
+                             alt="Логотип Unreal Engine">
+
+                        <!-- Краткое описание -->
+                        <h3>Краткое описание</h3>
+                        <p>
+                            Unreal Engine - <i>кроссплатформенный</i> игровой движок, разрабатываемый
+                            компанией <strong>Epic Games.</strong> <br>
+                            Первая версия стала доступна в <b>1998</b> году, а последняя - <b>Unreal Engine 5</b> - была
+                            анонсирована в 2020 году.
+                        </p>
+                        <a class="engine_page_link" href="Pages/UnrealEngine.html">На страницу движка</a>
+
+                    </article>
+
+                    <!-- CryEngine -->
+                    <article class="engine_description glass_pane glass_pane_border">
+                        <h2 id="CEH">CryEngine</h2>
+
+                        <!-- Логотип движка UE -->
+                        <img class="engine_logo" id="ce_logo" width="150" src="Static/CryEngine/cryengine_logo.png"
+                             alt="Логотип Unreal Engine">
+
+                        <!-- Краткое описание -->
+                        <h3>Краткое описание</h3>
+                        <p>
+                            CryEngine - <i>кроссплатформенный</i> игровой движок, созданный немецкой компанией <strong>Crytek.</strong>
+                            <br>
+                            Первое поколение стало доступно в <b>2002</b> году. Последняя на данный момент - CryEngine V, вышла в 2022 году.
+                            Следующее поколение - CryEngine 6 - уже находится в разработке.
+                        </p>
+                        <a class="engine_page_link" href="Pages/CryEngine.html">На страницу движка</a>
+
+                    </article>
+
+
+                    <!-- Godot -->
+                    <article class="engine_description glass_pane glass_pane_border">
+                        <h2 id="GODOTH">Godot</h2>
+
+                        <!-- Логотип движка UE -->
+                        <img class="engine_logo" id="gd_logo" width="150" src="Static/Godot/godot_logo.png"
+                             alt="Логотип Godot">
+
+                        <!-- Краткое описание -->
+                        <h3>Краткое описание</h3>
+                        <p>
+                            Godot - <b>открытый</b> <i>кроссплатформенный</i> игровой движок, разрабатываемый
+                             <strong>сообществом.</strong> <br>
+                            Данный движок распостраняется под лицензией <strong>MIT</strong>, а его исходный код открыт и доступен на GitHub.
+                            Первая версия стала доступна в <b>2014</b> году, последняя на данный момент - 3.5.1 - вышла в 2022 году.
+                            Следующая версия - Godot 4.0 - сейчас на финальных стадиях разработки.
+                        </p>
+                        <a class="engine_page_link" href="Pages/Godot.html">На страницу движка</a>
+
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- History -->
+            <section>
+                <h1 id="History">История</h1>
+
+                <div class="history_articles">
+                    <article id="history_before" class="history_article">
+                        <div class="history_content">
+                            <h2 class="history_header">До движков</h2>
+                            <p>
+                                Как создавались игры до появления игровых движков?
+                                Сколько времени уходило на разработку, и какие были трудности?
+                                История первых игр - от Spacewar! до Pac-man - в статье.
+                            </p>
+                            <div class="history_button_wrapper">
+                                <a class="history_link" href="Pages/history_before.html">Читать</a>
+
+                                <div class="article_like_wrapper">
+                                    <button class="article_like"><i class="fa-regular fa-heart"></i></button>
+                                    <div class="like_count">
+                                        623
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <img class="history_img" src="Static/History/space_invaders.png" alt="До движков">
+                    </article>
+
+                    <article id="history_first" class="history_article">
+                        <div class="history_content">
+                            <h2 class="history_header">Первые движки</h2>
+                            <p>
+                                Как и почему начали развиваться игровые движки?
+                                Когда они обрели популярность?
+                                История первых игровых движков - в статье.
+                            </p>
+                            <div class="history_button_wrapper">
+                                <a class="history_link" href="Pages/history_first.html">Читать</a>
+
+                                <div class="article_like_wrapper">
+                                    <button class="article_like"><i class="fa-regular fa-heart"></i></button>
+                                    <div class="like_count">
+                                        302
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <img class="history_img" src="Static/History/doom.png" alt="Первые движки">
+                    </article>
+
+                    <article id="history_current" class="history_article">
+                        <div class="history_content">
+                            <h2 class="history_header">Современные движки</h2>
+                            <p>
+                                Как развивались популярные сейчас движки? Откуда они берут своё начало?
+                                Какие технологии и возможности предоставляют движки сегодня, и сколько это стоит?
+                                Об этом - в статье.
+                            </p>
+                            <div class="history_button_wrapper">
+                                <a class="history_link" href="Pages/history_current.html">Читать</a>
+
+                                <div class="article_like_wrapper">
+                                    <button class="article_like"><i class="fa-regular fa-heart"></i></button>
+                                    <div class="like_count">
+                                        101
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <img class="history_img" src="Static/History/ue_lumen.png" alt="Современные движки">
+                    </article>
+                </div>
+
+            </section>
+
+        </main>
+
+        <footer>
+    <div id="about_block">
+        <h2 class="block_header">О сайте</h2>
+        <p>
+            На сайте GameDevBox.ru рассматриваются самые популярные на сегодняшний день игровые движки,
+            их возможности и преимущества, стоимость, условия лицензирования, история развития и многое другое.
+        </p>
+    </div>
+
+    <div id="social_networks_block">
+        <h2 class="block_header">Социальные сети</h2>
+
+        <div id="soc_network_holder">
+
+            <a id="vk" href="https://vk.com/" aria-label="ВКонтакте">
+                <i class="icon fa-brands fa-vk"></i>
+            </a>
+            <a id="linkedin" href="https://www.linkedin.com/" aria-label="LinkedIn">
+                <i class="icon fa-brands fa-linkedin-in"></i>
+            </a>
+            <a id="twitter" href="https://twitter.com/" aria-label="Twitter">
+                <i class="icon fa-brands fa-twitter"></i>
+            </a>
+            <a id="telegram" href="https://telegram.com/" aria-label="Telegram">
+                <i class="icon fa-brands fa-telegram"></i>
+            </a>
+            <a id="github" href="https://github.com/ncoolgamer" aria-label="Github">
+                <i class="icon fa-brands fa-github"></i>
+            </a>
+        </div>
+    </div>
+
+    <div id="map_block">
+        <h2 class="block_header">Карта сайта</h2>
+        <a href="index.html">Главная страница</a>
+        <a href="Pages/signup.html">Регистрация</a>
+        <a href="Pages/login.html">Вход</a>
+        <h3>Список движков</h3>
+        <ul>
+            <li><a href="Pages/Unity.html">Unity</a></li>
+            <li><a href="Pages/UnrealEngine.html">Unreal</a></li>
+            <li><a href="Pages/CryEngine.html">CryEngine</a></li>
+            <li><a href="Pages/Godot.html">Godot</a></li>
+        </ul>
+
+        <h3>История</h3>
+        <ul>
+            <li><a href="Pages/history_before.html">До движков</a></li>
+            <li><a href="Pages/history_first.html">Первые движки</a></li>
+            <li><a href="Pages/history_current.html">Современные движки</a></li>
+        </ul>
+    </div>
+
+    <address>
+        <h2 class="block_header">Контакты</h2>
+        <a href="mailto:orlov_dmitriy630@mail.ru?subject=Сообщение+с+сайта&body=Текст+сообщения">
+            <i class="fa-solid fa-envelope"></i>orlov_dmitriy630@mail.ru</a>
+        <br>
+        <a href="tel:+79161234567">
+            <i class="fa-solid fa-phone"></i>+7 (916) 123-45-67</a>
+
+    </address>
+
+    <p id="copyright" class="footer_author_text">
+        Сделано Орловым Дмитрием (группа ИКБО-03-21) в 2022 году.
+    </p>
+</footer>
+    </div>
+</div>
+
+<script>
+    function like(element) {
+        let like = element.querySelector('.article_like');
+        let likeCount = element.querySelector('.like_count');
+        let likeCountValue = parseInt(likeCount.innerHTML);
+
+        if (like.classList.contains('article_like_icon_clicked')) {
+            like.classList.remove('article_like_icon_clicked');
+            likeCount.innerHTML = likeCountValue - 1;
+        } else {
+            like.classList.add('article_like_icon_clicked');
+            // add temporary class to animate like heart, remove it after .2s
+            like.classList.add('article_like_icon_clicked_temp');
+            setTimeout(() => {
+                like.classList.remove('article_like_icon_clicked_temp');
+            }, 200);
+            likeCount.innerHTML = likeCountValue + 1;
+        }
+    }
+
+    // Add like to all articles
+    let articles = document.querySelectorAll('.article_like_wrapper');
+    for (let i = 0; i < articles.length; i++) {
+        let article = articles[i];
+        article.addEventListener('click', function() {
+            like(article);
+        });
+    }
+</script>
+
+</body>
+</html>

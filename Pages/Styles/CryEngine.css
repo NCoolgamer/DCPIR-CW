@@ -1,0 +1,26 @@
+@import "../../Static/shared.css";
+@import "../../Static/Slides/slides.css";
+@import "engine_page.css";
+
+body:before {
+    -webkit-filter: hue-rotate(100deg) brightness(0.8) saturate(0.7);
+            filter: hue-rotate(100deg) brightness(0.8) saturate(0.7);
+}
+
+#cr_logo {
+    max-height: 120px;
+    margin: 15px;
+}
+
+#cr_screenshot {
+    max-width: 600px;
+}
+/*# sourceMappingURL=CryEngine.css.map */
+
+/*# sourceMappingURL=CryEngine.css.map */
+
+/*# sourceMappingURL=CryEngine.css.map */
+
+/*# sourceMappingURL=CryEngine.css.map */
+
+/*# sourceMappingURL=CryEngine.css.map */

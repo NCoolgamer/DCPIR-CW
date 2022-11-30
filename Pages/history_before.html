@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Информация о странице -->
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="stylesheet" href="Styles/history_before.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,500;1,700&display=swap"
+          rel="stylesheet">
+
+    <title>До появления движков</title>
+
+    <script type="text/javascript" src="../Static/jquery-3.6.1.min.js"></script>
+
+    <script src="../Static/image_expander.js"></script>
+    <link href="../Static/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="../Static/fontawesome/css/brands.css" rel="stylesheet">
+    <link href="../Static/fontawesome/css/solid.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+
+</head>
+<body>
+
+<div class="page_wrapper">
+
+    <nav id="main_menu">
+    <a class="navbar_logo" href="../index.html"><img src="../Static/logo.png" alt="Логотип сайта"></a>
+    <a class="navbar_button" href="../index.html">Главная</a>
+    <a class="navbar_button" href="../Pages/Unity.html">Unity</a>
+    <a class="navbar_button" href="../Pages/UnrealEngine.html">Unreal</a>
+    <a class="navbar_button" href="../Pages/CryEngine.html">CryEngine</a>
+    <a class="navbar_button" href="../Pages/Godot.html">Godot</a>
+
+    <div class="dropdown">
+        <div class="navbar_button dropdown_btn">История</div>
+        <div class="dropdown_content">
+            <a class="navbar_button" href="../Pages/history_before.html">До движков</a>
+            <a class="navbar_button" href="../Pages/history_first.html">Первые движки</a>
+            <a class="navbar_button" href="../Pages/history_current.html">Современные движки</a>
+        </div>
+    </div>
+
+    <div class="account_buttons_holder">
+        <a class="account_button" href="../Pages/signup.html">Регистрация</a>
+        <a class="account_button" href="../Pages/login.html">Вход</a>
+    </div>
+</nav>
+
+<nav id="mobile_menu">
+    <div>
+        <a class="navbar_logo" href="../index.html"><img src="../Static/logo.png" alt="На главную"></a>
+        <input type="checkbox" id="hamburger_menu" class="burger_shower"/>
+        <label id="hamburger_label" for="hamburger_menu" class="burger_shower">
+            <div class="burger_icon">
+                <span class="icon-bar top-bar"></span>
+                <span class="icon-bar middle-bar"></span>
+                <span class="icon-bar bottom-bar"></span>
+            </div>
+        </label>
+    </div>
+    <div id="mobile_menu_buttons">
+        <a class="navbar_button" href="../index.html">Главная</a>
+        <div class="section_holder">
+            <div class="menu_section">
+                <input type="checkbox" id="engines_navbar" class="section_shower"/>
+                <label for="engines_navbar" class="dropdown_shower_label">
+                    Движки
+                </label>
+                <div class="section_content">
+                    <a class="navbar_button" href="../Pages/Unity.html">Unity</a>
+                    <a class="navbar_button" href="../Pages/UnrealEngine.html">Unreal</a>
+                    <a class="navbar_button" href="../Pages/CryEngine.html">CryEngine</a>
+                    <a class="navbar_button" href="../Pages/Godot.html">Godot</a>
+                </div>
+            </div>
+
+            <div class="menu_section">
+                <input type="checkbox" id="history_navbar" class="section_shower"/>
+                <label for="history_navbar" class="dropdown_shower_label">
+                    История
+                </label>
+                <div class="section_content">
+                    <a class="navbar_button" href="../Pages/history_before.html">До движков</a>
+                    <a class="navbar_button" href="../Pages/history_first.html">Первые движки</a>
+                    <a class="navbar_button" href="../Pages/history_current.html">Современные движки</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="account_buttons_holder">
+            <a class="account_button" href="../Pages/signup.html">Регистрация</a>
+            <a class="account_button" href="../Pages/login.html">Вход</a>
+        </div>
+
+        <div id="up_arrow"><i class="fa-solid fa-chevron-up"></i></div>
+    </div>
+
+    <script>
+
+        function setScrollState(enable) {
+            if (enable) {
+                // add style to html element
+                document.documentElement.style.overflow = "auto";
+            } else {
+                document.documentElement.style.overflow = "hidden";
+            }
+        }
+
+        var burger = document.getElementById("hamburger_menu");
+        var mobile_menu = document.getElementById("mobile_menu");
+        burger.addEventListener("click", function () {
+            mobile_menu.classList.toggle("expanded");
+            mobile_menu.style.pointerEvents = "none";
+
+            setScrollState(!burger.checked);
+
+            // wait 0.35s
+            setTimeout(function () {
+                mobile_menu.style.pointerEvents = "auto";
+            }, 350);
+        });
+
+        // on up arrow click, uncheck the burger
+        var up_arrow = document.getElementById("up_arrow");
+        up_arrow.addEventListener("click", function () {
+            burger.checked = !burger.checked;
+
+            setScrollState(!burger.checked);
+
+            mobile_menu.classList.toggle("expanded");
+            mobile_menu.style.pointerEvents = "none";
+            // wait 0.35s
+            setTimeout(function () {
+                mobile_menu.style.pointerEvents = "auto";
+            }, 350);
+        });
+
+        // for each dropdown shower, add an event listener
+        var dropdown_showers = document.getElementsByClassName("section_shower");
+        for (var i = 0; i < dropdown_showers.length; i++) {
+            dropdown_showers[i].addEventListener("click", function () {
+                // toggle class on the section
+                this.closest(".menu_section").classList.toggle("expanded");
+
+                // close all other sections if height is below 680px
+                if (window.innerHeight < 680) {
+                    for (var j = 0; j < dropdown_showers.length; j++) {
+                        if (dropdown_showers[j] !== this) {
+                            dropdown_showers[j].closest(".menu_section").classList.remove("expanded");
+                        }
+                    }
+                }
+
+            });
+        }
+    </script>
+</nav>
+
+    <div class="content_wrapper">
+        <main id="contents" class="glass_pane glass_pane_border">
+
+            <h1 id="Title">До движков</h1>
+
+            <section>
+                <h2>Первые компьютерные игры</h2>
+
+                <figure class="floatr">
+                    <img enlargeable id="spacewar" src="../Static/History/spacewar.png"
+                         alt="Игра Spacewar!, запущенная на PDP-1">
+                    <figcaption>Игра Spacewar!, запущенная на PDP-1</figcaption>
+                </figure>
+
+                <p>
+                    Первой компьютерной игрой считается игра <b>Spacewar!</b>, разработанная в <b>1962</b> году в
+                    Массачусетском
+                    технологическом
+                    институте (MIT) Стивом Расселом при участии Мартина Греца и Уэйна Витенена.
+                    Она была разработана на платформе компьютера Digital Equipment Corporation PDP-1.
+                    В игре участвовали два игрока, управляющих каждый своим кораблем, маневрирующим в космосе рядом с
+                    гравитационным колодцем звезды.
+                    У каждого игрока в распоряжении был некоторый запас горючего, которое он тратил на движение, и
+                    торпеды, которые он мог использовать для атаки.
+                    Если торпеда попадала в корабль игрока, или игрок сталкивался со звездой, то он погибал, а другой
+                    игрок выигрывал.
+                    Spacewar! стала настолько популярной, что в 1960-х была установлена практически на всех компьютерах
+                    PDP-1.
+                    Игра также оказала огромное влияние на развитие компьютерных игр.
+                </p>
+
+                <p>
+                    По словам разработчиков, на разработку игры ушло <b>200 человеко-часов и шесть недель времени</b>.
+                    С декабря по январь Рассел разрабатывал программу, которая была способна лишь двигать точку на
+                    экране.
+                    На настоящий момент это кажется слишком долгим сроком, но в то время это было нормально, ведь код
+                    писали на машинных языках.
+                    Это сильно затрудняло процесс разработки и отладки.
+                </p>
+
+                <p>
+                    Через 11 лет после разработки Spacewar!, в <b>1973</b> году, вышла первая коммерчески успешная игра,
+                    <b>Pong</b>,
+                    разработанная компанией Atari.
+                    Графически, игра представляла собой два прямоугольника, которые отражали мяч, двигающийся по
+                    экрану.
+                    Игроки могли управлять движением своего прямоугольника, чтобы отбивать мяч. Тот игрок, кто не смог
+                    отбить мяч, проигрывал.
+                    Игровые автоматы Pong устанавливали рядом с механическими аркадными играми на различных ярмарках,
+                    развлекательных центрах и прочих подобных местах.
+                    Эта довольно простая концепция игры оказалась неожиданно популярной, и Pong связывают появление
+                    индустрии интерактивных развлечений.
+                </p>
+
+                <figure class="floatl">
+                    <img enlargeable id="pong" src="../Static/History/Pong.gif"
+                         alt="Игровой процесс Pong">
+                    <figcaption>Игровой процесс Pong</figcaption>
+                </figure>
+
+                <p>
+                    В <b>1977</b> году компанией Taito была выпущена игра <b>Space Invaders</b>, которая уже больше
+                    похожа на
+                    современные игры. Игрок передвигал лазерную пушку, которая могла двигаться только влево и вправо, а
+                    также стрелял в движущихся сверху вниз пришельцев. Целью игры было уничтожение пяти рядов по
+                    одиннадцать пришельцев.
+                    Пришельцы стреляли в сторону игрока, и при попадании в неё, игрок терял одну жизнь. Пушка была
+                    частично защищена бункерами,
+                    которые могли принять несколько попаданий, но в конце концов исчезали.
+                    У игрока было бесконечное количество патронов. Попадая в пришельца, игрок уничтожал его и получал за
+                    это очки.
+                    После уничтожения всех пришельцев, появлялась новая волна, а игроку добавлялось очко жизни, поэтому
+                    игра была бесконечной.
+                </p>
+
+                <p class="no_float">
+                    Первые игры были написаны вручную на <b>машинном коде</b>.
+                    Распространение аркадных автоматов, которые на тот момент были самыми популярными игровыми
+                    платформами, означало,
+                    что большую часть кода игры всё каждый раз приходилось писать <b>заново</b>, так как следующие
+                    поколения автоматов
+                    имели другое оборудование и совершенно другие возможности.
+                    В связи с этим, большинство игр в 1980-х годах были разработаны при помощи жестко
+                    запрограммированных
+                    правил, имели малое количество уровней и были графически простыми.
+                </p>
+
+                <figure class="floatr">
+                    <img enlargeable id="space_invaders" src="../Static/History/space_invaders.png"
+                         alt="Игра Space Invaders (1977)">
+                    <figcaption>Игра Space Invaders (1977)</figcaption>
+                </figure>
+
+                <p>
+                    До появления игровых движков, разработчикам часто приходилось разрабатывать каждую игру с нуля,
+                    чтобы полностью контролировать процесс разработки и использовать все возможности, которые
+                    предоставляет
+                    конкретная платформа. Это было очень трудоемким и дорогостоящим процессом, который дополнительно
+                    осложнялся
+                    ограничениями в производительности и памяти.
+                </p>
+
+                <h2 class="no_float">Домашние игровые системы</h2>
+
+                <figure class="floatl">
+                    <img enlargeable id="atari2600" src="../Static/History/atari2600.png"
+                         alt="Консоль Atari 2600">
+                    <figcaption>Консоль Atari 2600</figcaption>
+                </figure>
+
+                <p>
+                    В конце 1970-х компьютерные игры постепенно начали переходить из аркад домой к игрокам, поэтому
+                    продолжительность игр стала расти,
+                    а целью стало не просто оплата игровой сессии как можно большим числом игроков.
+                    Первой популярной домашней игровой консолью стала <b>Atari 2600</b>, выпущенная в <b>1977</b> году.
+                    Игры на ней поставлялись в <b>картриджах</b>, которые вставлялись в консоль. Консоль имела <b>128
+                    байт
+                    оперативной памяти</b>, и процессор
+                    6507, работавший на частоте <b>1,19 МГц</b>. Управление осуществлялось с помощью джойстиков, которые
+                    подключались к консоли.
+                    Консоль обычно поставлялась с двумя джойстиками и всего одной игрой - сначала это была <b>Combat
+                    (1977)</b>, затем <b>Pac-Man (1980)</b>.
+                    Всего было продано около <b>40 миллионов</b> консолей.
+                    Огромный коммерческий успех Atari 2600 привел к быстрому развитию игровой индустрии.
+                </p>
+
+                <p>
+                    Производительность, как и количество разработчиков, которые хотели оставить свой след в игровой
+                    индустрии, стремительно росло.
+                    Это был золотой век для игровой индустрии. Но большинство игр были сделаны как отдельные продукты, а
+                    разработчики, возможно, иногда пытались использовать свой код в других играх, но практически никто
+                    не делился кодом с другими. Но уже через несколько лет эта ситуация начала кардинально меняться.
+                    Момент, с которого можно вести отсчет распространения игровых движков - выход игры Doom в <b>1993</b> году.
+                </p>
+
+                <div class="no_float buttons">
+                    <a class="next_btn" href="../Pages/history_first.html">
+                        Первые движки<i class="fa-solid fa-forward"></i>
+                    </a>
+                </div>
+
+            </section>
+        </main>
+
+        <footer>
+    <div id="about_block">
+        <h2 class="block_header">О сайте</h2>
+        <p>
+            На сайте GameDevBox.ru рассматриваются самые популярные на сегодняшний день игровые движки,
+            их возможности и преимущества, стоимость, условия лицензирования, история развития и многое другое.
+        </p>
+    </div>
+
+    <div id="social_networks_block">
+        <h2 class="block_header">Социальные сети</h2>
+
+        <div id="soc_network_holder">
+
+            <a id="vk" href="https://vk.com/" aria-label="ВКонтакте">
+                <i class="icon fa-brands fa-vk"></i>
+            </a>
+            <a id="linkedin" href="https://www.linkedin.com/" aria-label="LinkedIn">
+                <i class="icon fa-brands fa-linkedin-in"></i>
+            </a>
+            <a id="twitter" href="https://twitter.com/" aria-label="Twitter">
+                <i class="icon fa-brands fa-twitter"></i>
+            </a>
+            <a id="telegram" href="https://telegram.com/" aria-label="Telegram">
+                <i class="icon fa-brands fa-telegram"></i>
+            </a>
+            <a id="github" href="https://github.com/ncoolgamer" aria-label="Github">
+                <i class="icon fa-brands fa-github"></i>
+            </a>
+        </div>
+    </div>
+
+    <div id="map_block">
+        <h2 class="block_header">Карта сайта</h2>
+        <a href="../index.html">Главная страница</a>
+        <a href="../Pages/signup.html">Регистрация</a>
+        <a href="../Pages/login.html">Вход</a>
+        <h3>Список движков</h3>
+        <ul>
+            <li><a href="../Pages/Unity.html">Unity</a></li>
+            <li><a href="../Pages/UnrealEngine.html">Unreal</a></li>
+            <li><a href="../Pages/CryEngine.html">CryEngine</a></li>
+            <li><a href="../Pages/Godot.html">Godot</a></li>
+        </ul>
+
+        <h3>История</h3>
+        <ul>
+            <li><a href="../Pages/history_before.html">До движков</a></li>
+            <li><a href="../Pages/history_first.html">Первые движки</a></li>
+            <li><a href="../Pages/history_current.html">Современные движки</a></li>
+        </ul>
+    </div>
+
+    <address>
+        <h2 class="block_header">Контакты</h2>
+        <a href="mailto:orlov_dmitriy630@mail.ru?subject=Сообщение+с+сайта&body=Текст+сообщения">
+            <i class="fa-solid fa-envelope"></i>orlov_dmitriy630@mail.ru</a>
+        <br>
+        <a href="tel:+79161234567">
+            <i class="fa-solid fa-phone"></i>+7 (916) 123-45-67</a>
+
+    </address>
+
+    <p id="copyright" class="footer_author_text">
+        Сделано Орловым Дмитрием (группа ИКБО-03-21) в 2022 году.
+    </p>
+</footer>
+
+    </div>
+</div>
+
+<script src="../Static/Videos/youtube_api.js"></script>
+
+</body>
+</html>

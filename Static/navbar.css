@@ -1,0 +1,615 @@
+/*Parent of all navbar elements*/
+
+:root {
+    --navbar_height: 64px;
+    --navbar_color: 41, 42, 54;
+    --navbar_color_a: rgba(var(--navbar_color), 0.7);
+}
+
+#main_menu {
+    height: var(--navbar_height);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    z-index: 10;
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    -webkit-box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.5);
+
+            box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+#main_menu:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--navbar_color_a);
+    z-index: -1;
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+}
+
+/*Logo in the navbar*/
+.navbar_logo {
+    height: calc(var(--navbar_height) - 10px);
+
+    margin: 5px;
+
+    display: -webkit-inline-box;
+
+    display: -ms-inline-flexbox;
+
+    display: inline-flex;
+    vertical-align: middle;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    color: var(--light-blue);
+}
+
+.navbar_logo img {
+    height: 100%;
+}
+
+/*A button in the navbar*/
+.navbar_button {
+    height: auto;
+    line-height: var(--navbar_height);
+    text-align: center;
+    vertical-align: middle;
+
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 1.5rem;
+
+    margin: 0 5px;
+    padding: 0 10px;
+
+    text-decoration: none;
+
+    /*background: #ffddad;*/
+    background: transparent;
+    color: var(--light-blue);
+}
+
+.dropdown_btn {
+    padding: 0 18px;
+}
+
+/* add a caret down after the button */
+.dropdown_btn:after {
+    content: "\f0d7";
+    font-family: "Font Awesome 6 Free";
+    margin-left: 5px;
+}
+
+
+/*Pseudo-class for navbar buttons on hover*/
+.navbar_button:hover {
+    background: var(--light-light-gray);
+    color: #bb3838;
+}
+
+/*Pseudo-class for navbar buttons on click*/
+.navbar_button:active {
+    background: var(--light-light-gray);
+    color: var(--light-green);
+}
+
+/*Dropdown*/
+.dropdown {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    z-index: 10;
+    padding: 0 5px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+}
+
+.dropdown a {
+    width: 100%;
+}
+
+.dropdown .navbar_button {
+    margin: 0;
+}
+
+.dropdown_content {
+    display: none;
+    position: relative;
+    z-index: 5;
+
+    /* Add box-shadow to bottom, left and right sides */
+    -webkit-box-shadow: 0 5px 5px 0 rgb(0 0 0 / 50%), -5px 4px 5px 0 rgb(0 0 0 / 50%), 5px 4px 5px 0 rgb(0 0 0 / 50%);
+            box-shadow: 0 5px 5px 0 rgb(0 0 0 / 50%), -5px 4px 5px 0 rgb(0 0 0 / 50%), 5px 4px 5px 0 rgb(0 0 0 / 50%);
+}
+
+.dropdown_content:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--navbar_color_a);
+    z-index: -1;
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+}
+
+.dropdown_content a {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown:hover .dropdown_content {
+    display: block;
+}
+
+.dropdown .dropdown_btn {
+    width: 18rem;
+}
+
+.account_buttons_holder {
+    margin: auto 2em auto auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+
+    line-height: calc(var(--navbar_height) - 10px);
+    background: var(--light-green);
+    border-radius: var(--round_border_width);
+}
+
+.account_button {
+    border-radius: var(--round_border_width);
+    text-align: center;
+    vertical-align: middle;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 1.5rem;
+
+    margin: 0 0;
+    padding: 0 15px;
+
+    text-decoration: none;
+
+    /*background: #ffddad;*/
+    background: var(--light-green);
+    color: var(--light-light-gray);
+}
+
+.account_button:first-child {
+    border-radius: var(--round_border_width) 0 0 var(--round_border_width);
+}
+
+.account_button:last-child {
+    border-radius: 0 var(--round_border_width) var(--round_border_width) 0;
+}
+
+/*Pseudo-class for navbar buttons on hover*/
+.account_button:hover {
+    background: var(--light-light-gray);
+    color: #bb3838;
+}
+
+.account_button:active {
+    background: var(--light-light-gray);
+    color: var(--light-green);
+}
+
+/* Style the mobile menu, hide it by default */
+#mobile_menu {
+    visibility: hidden;
+    display: none;
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: var(--navbar_height);
+
+    opacity: 1;
+
+    z-index: 100000000;
+
+    -webkit-box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.5);
+
+            box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.5);
+
+    -webkit-transition: height 0.35s ease-in-out;
+
+    -o-transition: height 0.35s ease-in-out;
+
+    transition: height 0.35s ease-in-out;
+
+    -webkit-box-orient: vertical;
+
+    -webkit-box-direction: normal;
+
+        -ms-flex-direction: column;
+
+            flex-direction: column;
+}
+
+#mobile_menu:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--navbar_color_a);
+    z-index: -1;
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+    -webkit-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+/* Stretch when expanded to blur everything */
+#mobile_menu.expanded {
+    height: 100%;
+}
+
+/* Darken background when expanded */
+#mobile_menu.expanded:before {
+    background-color: rgba(var(--navbar_color), 0.9);
+}
+
+/* Hide the checkboxes, but leave the label */
+.burger_shower, .section_shower {
+    display: none;
+}
+
+/* Style the hamburger menu label, make it float right */
+#mobile_menu input[type=checkbox] + #hamburger_label {
+    display: inline-block;
+    vertical-align: middle;
+    height: var(--navbar_height);
+    width: var(--navbar_height);
+    margin-left: auto;
+    margin-right: 15px;
+    float: right;
+}
+
+/* Style the hamburger menu icon holder */
+#mobile_menu .burger_icon {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-line-pack: distribute;
+        align-content: space-around;
+    overflow: hidden;
+    height: var(--navbar_height);
+}
+
+/* Style the hamburger menu icon bar */
+#mobile_menu .icon-bar {
+    display: block;
+    width: calc(var(--navbar_height) * 1.2);
+    height: calc(var(--navbar_height) * .1);;
+    background-color: var(--light-light-gray);
+    margin: auto auto;
+
+    -webkit-transition: all 0.2s;
+
+    -o-transition: all 0.2s;
+
+    transition: all 0.2s;
+    -webkit-transform: rotate(0);
+        -ms-transform: rotate(0);
+            transform: rotate(0);
+}
+
+/* Style the hamburger menu icon top bar on click, rotate it */
+#mobile_menu.expanded label .top-bar {
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transform-origin: 10% 10%;
+        -ms-transform-origin: 10% 10%;
+            transform-origin: 10% 10%;
+}
+
+/* Style the hamburger menu icon mid bar on click, hide it */
+#mobile_menu.expanded label .middle-bar {
+    opacity: 0;
+}
+
+/* Style the hamburger menu icon bottom bar on click, rotate it */
+#mobile_menu.expanded label .bottom-bar {
+    -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-transform-origin: 10% 90%;
+        -ms-transform-origin: 10% 90%;
+            transform-origin: 10% 90%;
+}
+
+/* Style the div that holds all menu buttons */
+#mobile_menu #mobile_menu_buttons {
+    -webkit-transition: max-height 0.35s ease-in-out;
+    -o-transition: max-height 0.35s ease-in-out;
+    transition: max-height 0.35s ease-in-out;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+
+    max-height: 0;
+    overflow: hidden;
+
+    height: 100%;
+    width: 100%;
+}
+
+/* Move the buttons down when expanded */
+#mobile_menu.expanded #mobile_menu_buttons {
+    max-height: 100%;
+}
+
+/* allow to have two sections side by side */
+#mobile_menu_buttons .section_holder {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+
+    margin: 0 20px;
+}
+
+/* Style sections */
+#mobile_menu_buttons .menu_section {
+    border: 3px solid var(--light-light-gray);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 0;
+    border-radius: var(--round_border_width);
+
+    margin: 0.5rem 1rem;
+
+    max-width: 400px;
+}
+
+/* Style section headers */
+#mobile_menu_buttons .menu_section label {
+    color: var(--light-light-gray);
+    text-align: center;
+    max-width: 80%;
+    margin: 0.5rem;
+    font-size: 1.8rem;
+
+    font-weight: 900;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+
+/* add a caret to the left of the label */
+#mobile_menu_buttons .menu_section label:after {
+    content: "\f0da";
+    font-family: "Font Awesome 6 Free";
+    margin-left: 0.5rem;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+
+    -webkit-transition: -webkit-transform 0.1s ease-in-out;
+
+    transition: -webkit-transform 0.1s ease-in-out;
+
+    -o-transition: transform 0.1s ease-in-out;
+
+    transition: transform 0.1s ease-in-out;
+
+    transition: transform 0.1s ease-in-out, -webkit-transform 0.1s ease-in-out;
+}
+
+/* rotate the caret when expanded */
+#mobile_menu_buttons .menu_section.expanded label:after {
+    -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+    -webkit-transition: -webkit-transform 0.2s ease-in-out;
+    transition: -webkit-transform 0.2s ease-in-out;
+    -o-transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+
+/* Hide the dropdowns when not expanded */
+#mobile_menu_buttons .menu_section .section_content {
+    max-height: 0;
+    overflow: hidden;
+    -webkit-transition: all .1s ease-in-out;
+    -o-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+}
+
+/* Show the dropdowns when expanded */
+#mobile_menu_buttons .menu_section.expanded .section_content {
+    max-height: 500px;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+/* Make the accoutn buttons bigger and borderless */
+#mobile_menu_buttons .account_buttons_holder {
+    margin: 0;
+    width: 90%;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    max-width: 600px;
+
+    background: none;
+
+    -ms-flex-pack: distribute;
+
+        justify-content: space-around;
+}
+
+#mobile_menu_buttons .account_buttons_holder a {
+    padding: 0.5rem 2rem;
+    margin: 0.25rem;
+    background: var(--light-green);
+
+    border-radius: var(--round_border_width);
+
+    width: 10rem;
+
+    line-height: normal;
+}
+
+#mobile_menu_buttons a {
+    display: block;
+    margin: 0;
+    padding: 0 0.25rem;
+    width: calc(100% - 0.25rem);
+    font-size: 1.5rem;
+}
+
+#mobile_menu_buttons .menu_section a:last-child {
+    border-radius: 0 0 var(--round_border_width) var(--round_border_width);
+
+    /* fix for the border radius */
+    margin-bottom: -2px;
+}
+
+#mobile_menu #up_arrow {
+    margin-top: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+
+    font-size: 4rem;
+
+    opacity: 0;
+
+    color: var(--light-light-gray);
+
+    -webkit-transition: all 0.35s ease-in-out;
+
+    -o-transition: all 0.35s ease-in-out;
+
+    transition: all 0.35s ease-in-out;
+}
+
+#mobile_menu.expanded #up_arrow {
+    bottom: 1rem;
+    opacity: 1;
+}
+
+/* Hide the bar menu on small screens */
+@media screen and (max-width: 1400px) {
+
+    #main_menu {
+        display: none;
+    }
+
+    #mobile_menu {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        visibility: visible;
+    }
+
+    .navbar_button {
+        line-height: calc(var(--navbar_height) * 0.7);
+    }
+}
+
+/* make navbar a little smaller on very small screens */
+@media screen and (max-height: 720px) {
+    :root {
+        --navbar_height: 55px;
+    }
+}
+/*# sourceMappingURL=navbar.css.map */
+
+/*# sourceMappingURL=navbar.css.map */
+
+/*# sourceMappingURL=navbar.css.map */
+
+/*# sourceMappingURL=navbar.css.map */
+
+/*# sourceMappingURL=navbar.css.map */

@@ -1,0 +1,112 @@
+@import "content_page.css";
+body:before {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-size: 100% 100%;
+    background-position: 0 0;
+    background-image: -o-repeating-linear-gradient(316deg, #28012D2E 94%, #073AFF00 100%),-o-repeating-radial-gradient(115% -206%, 55% 55%, #4DC46D12 30%, #00625214 39%),-o-radial-gradient(115% 62%, 99% 99%, #004055FF 0%, #B607FF00 100%),-o-radial-gradient(22% 39%, 99% 99%, #004006FF 0%, #073AFF00 100%),-o-radial-gradient(965px -562px, 160% 154%, #003546FF 0%, #011016FF 100%);
+    background-image: repeating-linear-gradient(134deg, #28012D2E 94%, #073AFF00 100%),repeating-radial-gradient(55% 55% at 115% -206%, #4DC46D12 30%, #00625214 39%),radial-gradient(99% 99% at 115% 62%, #004055FF 0%, #B607FF00 100%),radial-gradient(99% 99% at 22% 39%, #004006FF 0%, #073AFF00 100%),radial-gradient(160% 154% at 965px -562px, #003546FF 0%, #011016FF 100%);}
+
+
+.buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+
+    overflow: visible;
+
+    gap: 10px;
+
+    margin: 1rem;
+}
+
+.buttons a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    text-decoration: none;
+
+    height: 100%;
+
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+    border-radius: 10px;
+
+    padding: .5rem;
+
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+
+    -webkit-transition: all 0.2s ease-in-out;
+
+    -o-transition: all 0.2s ease-in-out;
+
+    transition: all 0.2s ease-in-out;
+
+    -webkit-box-shadow: 0 0 4px 7px rgba(0, 0, 0, 0.3);
+
+            box-shadow: 0 0 4px 7px rgba(0, 0, 0, 0.3);
+
+    border: rgba(255, 255, 255, 0.3) 0.1rem solid;
+    border-right: rgba(255, 255, 255, 0.15) 0.1rem solid;
+    border-bottom: rgba(255, 255, 255, 0.15) 0.1rem solid;
+}
+
+.buttons a:hover {
+    color: var(--light-blue);
+    -webkit-box-shadow: 0 0 4px 7px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 4px 7px rgba(0, 0, 0, 0.5);
+}
+
+.buttons a:active {
+    color: var(--light-blue);
+    -webkit-box-shadow: none;
+            box-shadow: none;
+
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.buttons a i {
+    margin: 0.5rem;
+}
+
+/* "next article" glassmorphism button */
+.buttons a.next_btn {
+    margin-left: auto;
+}
+
+.buttons a.previous_btn {
+    margin-right: auto;
+}
+/*# sourceMappingURL=history_page.css.map */
+
+/*# sourceMappingURL=history_page.css.map */
+
+/*# sourceMappingURL=history_page.css.map */
+
+/*# sourceMappingURL=history_page.css.map */
+
+/*# sourceMappingURL=history_page.css.map */
