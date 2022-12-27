@@ -1,0 +1,5 @@
+*.css linguist-language=CSS linguist-detectable -linguist-vendored -linguist-generated
+*.js linguist-detectable
+*.html linguist-detectable
+Static/fontawesome/** -linguist-detectable linguist-vendored linguist-generated
+Static/jquery-3.6.1.min.js -linguist-detectable linguist-vendored linguist-generated
